@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KalliRP Tournament Brackets</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="brand-row">
+                        <img src="1440815492330815528.png" alt="Logo do Server" class="server-logo">
+                        <div>
+                            <h1 class="main-title">KalliRP Tournament</h1>
+                            <p class="main-subtitle">Torneio de Eliminação Direta - 21 Equipas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button id="top3Btn" class="header-btn top3-btn" title="Ver Top 3">🏆</button>
+                        <button id="discordConfigBtn" class="header-btn discord-btn" title="Configurar Discord">🔗</button>
+                        <button id="resetBtn" class="header-btn reset-btn" title="Reset Tournament">🔄</button>
+                        <button id="saveBtn" class="header-btn save-btn" title="Guardar Progresso">💾</button>
+                    </div>
+                    <div class="tournament-status">
+                        <span class="status-label">Status:</span>
+                        <span class="status-badge" id="tournamentStatus">Em Progresso</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Instructions Panel -->
+        <div class="instructions-panel">
+            <div class="instruction-card">
+                <span class="instruction-number">1</span>
+                <div class="instruction-text">
+                    <strong>Editar Datas</strong>
+                    <p>Clique no campo de data de cada partida para editar, depois clique no ✓</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                <span class="instruction-number">2</span>
+                <div class="instruction-text">
+                    <strong>Inserir Resultados</strong>
+                    <p>Digite o resultado de cada equipa e clique em "Confirmar Resultado"</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                <span class="instruction-number">3</span>
+                <div class="instruction-text">
+                    <strong>Navegar pelo Bracket</strong>
+                    <p>Arraste com o mouse para a esquerda/direita ou use os botões no topo</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="rules-panel">
+            <h3>Regras Oficiais do Evento</h3>
+            <ul class="rules-list">
+                <li><strong>Aztecas</strong> passam diretos para a fase <strong>Melhor de 3</strong>.</li>
+                <li>Ordem dos mapas definida por <strong>jogo de dados in-game (MD3, primeiro a 2)</strong>.</li>
+                <li>Quem ataca/defende definido por <strong>jogo de dados in-game (MD3, primeiro a 2)</strong>.</li>
+                <li>Tempo máximo por fight: <strong>45 minutos</strong>.</li>
+                <li>No fim do tempo, vence a equipa com <strong>mais membros vivos</strong>.</li>
+                <li>Se terminarem com o mesmo número de vivos, o <strong>mapa é anulado</strong>.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <div class="round-navigation">
+            <button onclick="scrollToRound(1)" class="nav-tab" data-round="1">
+                <span class="nav-icon">🎮</span>
+                <span class="nav-label">Round 1</span>
+                <span class="nav-count">11 partidas</span>
+            </button>
+            <button onclick="scrollToRound(2)" class="nav-tab" data-round="2">
+                <span class="nav-icon">🔥</span>
+                <span class="nav-label">Quartos</span>
+                <span class="nav-count">5 partidas</span>
+            </button>
+            <button onclick="scrollToRound(3)" class="nav-tab" data-round="3">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-label">Meias</span>
+                <span class="nav-count">3 partidas</span>
+            </button>
+            <button onclick="scrollToRound(4)" class="nav-tab" data-round="4">
+                <span class="nav-icon">👑</span>
+                <span class="nav-label">Final</span>
+                <span class="nav-count">1 partida</span>
+            </button>
+            <button onclick="scrollToRound(5)" class="nav-tab" data-round="5">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-label">Campeão</span>
+            </button>
+        </div>
+
+        <div class="bracket-container">
+            <!-- Round 1 -->
+            <div class="round" data-round="1">
+                <div class="round-header">
+                    <div class="round-badge">Round 1</div>
+                    <h2 class="round-title">Primeira Eliminatória</h2>
+                    <div class="round-subtitle">11 Partidas • 06-20 Março</div>
+                </div>
+                
+                <div class="match" data-match="1" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="06 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(1)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Reapers">
+                            <span class="team-name">Reapers</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Los Piratas">
+                            <span class="team-name">Los Piratas</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="2" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="06 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(2)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Vanilla">
+                            <span class="team-name">Vanilla</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Club77">
+                            <span class="team-name">Club77</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="3" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="07 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(3)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Triads">
+                            <span class="team-name">Triads</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Vagos">
+                            <span class="team-name">Vagos</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="4" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="07 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(4)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Kibera">
+                            <span class="team-name">Kibera</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Belluci">
+                            <span class="team-name">Belluci</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="5" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="13 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(5)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Bahamas">
+                            <span class="team-name">Bahamas</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Southside">
+                            <span class="team-name">Southside</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="6" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="13 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(6)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Ballas">
+                            <span class="team-name">Ballas</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="OBlock">
+                            <span class="team-name">OBlock</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="7" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="14 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(7)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Bloods">
+                            <span class="team-name">Bloods</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="SOA">
+                            <span class="team-name">SOA</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="8" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="14 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(8)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="LSPD">
+                            <span class="team-name">LSPD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Demonike">
+                            <span class="team-name">Demonike</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="9" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="20 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(9)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Fury">
+                            <span class="team-name">Fury</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Tequila">
+                            <span class="team-name">Tequila</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="10" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="20 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(10)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team" data-team="Olympus">
+                            <span class="team-name">Olympus</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="18th">
+                            <span class="team-name">18th</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                </div>
+
+                <div class="match bye-match" data-match="11" data-round="1">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input bye-input" value="Isenção - Passa Automático" placeholder="Isenção" disabled>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team winner bye-team" data-team="Aztecas">
+                            <span class="team-name">Aztecas</span>
+                            <span class="bye-text">✓ Passa automaticamente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 2 - Quarterfinals -->
+            <div class="round" data-round="2">
+                <div class="round-header">
+                    <div class="round-badge">Quartos de Final</div>
+                    <h2 class="round-title">Melhores de 6</h2>
+                    <div class="round-subtitle">5 Partidas • Datas a Definir</div>
+                </div>
+                
+                <div class="match" data-match="12" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(12)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="13" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(13)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="14" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(14)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="15" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(15)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="16" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(16)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match info-match" data-match="17" data-round="2">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="Slot reservado" placeholder="Slot reservado" disabled>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team winner bye-team">
+                            <span class="team-name">Aztecas entram diretos na fase MD3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 3 - Semifinals -->
+            <div class="round" data-round="3">
+                <div class="round-header">
+                    <div class="round-badge">Meias-Finais</div>
+                    <h2 class="round-title">Melhores de 3</h2>
+                    <div class="round-subtitle">3 Partidas • Datas a Definir</div>
+                </div>
+                
+                <div class="match" data-match="18" data-round="3">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(18)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="19" data-round="3">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(19)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+
+                <div class="match" data-match="20" data-round="3">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(20)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+            </div>
+
+            <!-- Round 4 - Finals -->
+            <div class="round" data-round="4">
+                <div class="round-header">
+                    <div class="round-badge">Final</div>
+                    <h2 class="round-title">Grande Final</h2>
+                    <div class="round-subtitle">1 Partida • Data a Definir</div>
+                </div>
+                
+                <div class="match" data-match="21" data-round="4">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(21)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                </div>
+            </div>
+
+            <!-- Champion -->
+            <div class="round" data-round="5">
+                <div class="round-header">
+                    <h2 class="round-title">🏆 CAMPEÃO</h2>
+                    <span class="round-info">Vencedor do Torneio</span>
+                </div>
+                
+                <div class="champion-display">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="champion-name">TBD</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 3 Modal -->
+    <div id="top3Modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">🏆 Top 3 do Torneio</h2>
+            <div class="podium">
+                <div class="podium-place second">
+                    <div class="podium-rank">2º</div>
+                    <div class="podium-icon">🥈</div>
+                    <div class="podium-team" id="secondPlace">TBD</div>
+                    <div class="podium-label">Vice-Campeão</div>
+                </div>
+                <div class="podium-place first">
+                    <div class="podium-rank">1º</div>
+                    <div class="podium-icon">🥇</div>
+                    <div class="podium-team" id="firstPlace">TBD</div>
+                    <div class="podium-label">CAMPEÃO</div>
+                </div>
+                <div class="podium-place third">
+                    <div class="podium-rank">3º</div>
+                    <div class="podium-icon">🥉</div>
+                    <div class="podium-team" id="thirdPlace">TBD</div>
+                    <div class="podium-label">Terceiro Lugar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discord Config Modal -->
+    <div id="discordModal" class="modal">
+        <div class="modal-content discord-modal">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">🔗 Configurar Discord Webhook</h2>
+            <div class="discord-config">
+                <p class="discord-info">Cole o URL do webhook do Discord abaixo. As datas das partidas serão enviadas automaticamente.</p>
+                <input type="text" id="webhookUrl" class="webhook-input" placeholder="https://discord.com/api/webhooks/...">
+                <button id="saveWebhook" class="save-webhook-btn">💾 Guardar Webhook</button>
+                <button id="testWebhook" class="test-webhook-btn">🧪 Testar Webhook</button>
+                <div id="webhookStatus" class="webhook-status"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
