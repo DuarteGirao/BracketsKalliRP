@@ -1,0 +1,116 @@
+/* ===================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   =================================== */
+
+@media (max-width: 900px) {
+    .main-title { 
+        font-size: 1.6rem; 
+    }
+    
+    .server-logo { 
+        width: 50px; 
+        height: 50px; 
+    }
+    
+    .round { 
+        min-width: 270px; 
+    }
+}
+
+@media (max-width: 768px) {
+    body { 
+        padding: 10px; 
+    }
+    
+    .instructions-panel { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .header-content { 
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+    
+    .header-right { 
+        width: 100%; 
+        justify-content: space-between; 
+    }
+    
+    .main-title { 
+        font-size: 1.4rem; 
+    }
+    
+    .server-logo { 
+        width: 48px; 
+        height: 48px; 
+    }
+    
+    .header-btn { 
+        width: 38px; 
+        height: 38px; 
+        font-size: 1.1rem; 
+    }
+    
+    .podium-team { 
+        font-size: 1.2rem; 
+    }
+    
+    .modal-content { 
+        padding: 25px; 
+    }
+    
+    .podium {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .podium-place {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .podium-place.first,
+    .podium-place.second,
+    .podium-place.third {
+        height: auto;
+        min-height: 150px;
+    }
+    
+    .podium-place.first { order: 1; }
+    .podium-place.second { order: 2; }
+    .podium-place.third { order: 3; }
+}
+
+@media (max-width: 480px) {
+    .main-title { 
+        font-size: 1.2rem; 
+    }
+    
+    .main-subtitle { 
+        font-size: 0.85rem; 
+    }
+    
+    .header-actions { 
+        gap: 6px; 
+    }
+    
+    .header-btn { 
+        width: 36px; 
+        height: 36px; 
+        font-size: 1rem; 
+    }
+    
+    .status-label { 
+        display: none; 
+    }
+    
+    .nav-tab { 
+        min-width: 100px; 
+        padding: 8px 10px; 
+    }
+    
+    .match { 
+        padding: 10px; 
+    }
+}

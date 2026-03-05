@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KalliRP Tournament Brackets</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
                         <img src="1440815492330815528.png" alt="Logo do Server" class="server-logo">
                         <div>
                             <h1 class="main-title">KalliRP Tournament</h1>
-                            <p class="main-subtitle">Torneio de Eliminação Direta - 21 Equipas</p>
+                            <p class="main-subtitle">Torneio de Eliminação Direta - 22 Equipas</p>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
             <button onclick="scrollToRound(3)" class="nav-tab" data-round="3">
                 <span class="nav-icon">⚡</span>
                 <span class="nav-label">Meias</span>
-                <span class="nav-count">3 partidas</span>
+                <span class="nav-count">3 partidas (MD3)</span>
             </button>
             <button onclick="scrollToRound(4)" class="nav-tab" data-round="4">
                 <span class="nav-icon">👑</span>
@@ -109,7 +109,7 @@
                 <div class="round-header">
                     <div class="round-badge">Round 1</div>
                     <h2 class="round-title">Primeira Eliminatória</h2>
-                    <div class="round-subtitle">11 Partidas • 06-20 Março</div>
+                    <div class="round-subtitle">11 Partidas (22 Equipas) • 06-20 Março</div>
                 </div>
                 
                 <div class="match" data-match="1" data-round="1">
@@ -302,15 +302,25 @@
                     <button class="confirm-btn">Confirmar Resultado</button>
                 </div>
 
-                <div class="match bye-match" data-match="11" data-round="1">
+                <div class="match" data-match="11" data-round="1">
                     <div class="match-date-header">
-                        <input type="text" class="edit-date-input bye-input" value="Isenção - Passa Automático" placeholder="Isenção" disabled>
+                        <input type="text" class="edit-date-input" value="21 de março" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(11)">✓</button>
                     </div>
                     <div class="match-teams">
-                        <div class="team winner bye-team" data-team="Aztecas">
-                            <span class="team-name">Aztecas</span>
-                            <span class="bye-text">✓ Passa automaticamente</span>
+                        <div class="team" data-team="Synndicate">
+                            <span class="team-name">Synndicate</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
                         </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team" data-team="Aztecas">
+                            <span class="team-name">Aztecas</span>
+                            <input type="number" class="score-input" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <button class="confirm-btn">Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(17, 222, 251, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(2, 7, 170);">
+                        ⚡ Vencedor passa direto para MD3
                     </div>
                 </div>
             </div>
@@ -320,7 +330,7 @@
                 <div class="round-header">
                     <div class="round-badge">Quartos de Final</div>
                     <h2 class="round-title">Melhores de 6</h2>
-                    <div class="round-subtitle">5 Partidas • Datas a Definir</div>
+                    <div class="round-subtitle">5 Partidas • A Anunciar</div>
                 </div>
                 
                 <div class="match" data-match="12" data-round="2">
@@ -418,26 +428,42 @@
                     <button class="confirm-btn" disabled>Confirmar Resultado</button>
                 </div>
 
-                <div class="match info-match" data-match="17" data-round="2">
-                    <div class="match-date-header">
-                        <input type="text" class="edit-date-input" value="Slot reservado" placeholder="Slot reservado" disabled>
-                    </div>
-                    <div class="match-teams">
-                        <div class="team winner bye-team">
-                            <span class="team-name">Aztecas entram diretos na fase MD3</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-            <!-- Round 3 - Semifinals -->
+            <!-- Round 3 - Quartas MD3 -->
             <div class="round" data-round="3">
                 <div class="round-header">
-                    <div class="round-badge">Meias-Finais</div>
+                    <div class="round-badge">Quartas MD3</div>
                     <h2 class="round-title">Melhores de 3</h2>
-                    <div class="round-subtitle">3 Partidas • Datas a Definir</div>
+                    <div class="round-subtitle">3 Quartas de Final → Sistema Especial</div>
                 </div>
                 
+                <div class="match" data-match="17" data-round="3">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(17)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">TBD</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(100, 149, 237, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(25, 25, 112);">
+                        🎮 QUARTAS #1 → Vencedor para Semifinal
+                    </div>
+                    <div style="text-align: center; margin-top: 4px; padding: 4px; background: rgba(17, 222, 251, 0.15); border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: rgb(2, 7, 170);">
+                        ⚡ Recebe vencedor direto do Match 11
+                    </div>
+                </div>
+
                 <div class="match" data-match="18" data-round="3">
                     <div class="match-date-header">
                         <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
@@ -455,6 +481,9 @@
                         </div>
                     </div>
                     <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(100, 149, 237, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(25, 25, 112);">
+                        🎮 QUARTAS #2 → Vencedor para Semifinal
+                    </div>
                 </div>
 
                 <div class="match" data-match="19" data-round="3">
@@ -474,9 +503,21 @@
                         </div>
                     </div>
                     <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(100, 149, 237, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(25, 25, 112);">
+                        🎮 QUARTAS #3 → Vencedor DIRETO para FINAL
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 4 semi + 3rd -->
+            <div class="round" data-round="4">
+                <div class="round-header">
+                    <div class="round-badge">Semifinal & 3º</div>
+                    <h2 class="round-title">Melhores de 3</h2>
+                    <div class="round-subtitle">1 Semifinal + Disputa 3º Lugar</div>
                 </div>
 
-                <div class="match" data-match="20" data-round="3">
+                <div class="match" data-match="20" data-round="4">
                     <div class="match-date-header">
                         <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
                         <button class="edit-date-btn" onclick="updateMatchDate(20)">✓</button>
@@ -493,18 +534,45 @@
                         </div>
                     </div>
                     <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(255, 215, 0, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(184, 134, 11);">
+                        🎯 SEMIFINAL → Vencedor para FINAL
+                    </div>
+                </div>
+
+                <div class="match" data-match="22" data-round="4">
+                    <div class="match-date-header">
+                        <input type="text" class="edit-date-input" value="Após Semifinal" placeholder="Data da partida">
+                        <button class="edit-date-btn" onclick="updateMatchDate(22)">✓</button>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team tbd">
+                            <span class="team-name">Perdedor SF</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team tbd">
+                            <span class="team-name">Perdedor Q3</span>
+                            <input type="number" class="score-input" min="0" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <button class="confirm-btn" disabled>Confirmar Resultado</button>
+                    <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(205, 127, 50, 0.2); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: rgb(139, 69, 19);">
+                        🥉 DISPUTA DE 3º LUGAR
+                    </div>
                 </div>
             </div>
 
-            <!-- Round 4 - Finals -->
-            <div class="round" data-round="4">
+            <!-- Round 5 - Final -->
+
+            <!-- Round 5 - Final -->
+            <div class="round" data-round="5">
                 <div class="round-header">
                     <div class="round-badge">Final</div>
                     <h2 class="round-title">Grande Final</h2>
-                    <div class="round-subtitle">1 Partida • Data a Definir</div>
+                    <div class="round-subtitle">1 Partida • A Anunciar</div>
                 </div>
                 
-                <div class="match" data-match="21" data-round="4">
+                <div class="match" data-match="21" data-round="5">
                     <div class="match-date-header">
                         <input type="text" class="edit-date-input" value="A anunciar" placeholder="Data da partida">
                         <button class="edit-date-btn" onclick="updateMatchDate(21)">✓</button>
@@ -525,7 +593,7 @@
             </div>
 
             <!-- Champion -->
-            <div class="round" data-round="5">
+            <div class="round" data-round="6">
                 <div class="round-header">
                     <h2 class="round-title">🏆 CAMPEÃO</h2>
                     <span class="round-info">Vencedor do Torneio</span>
@@ -564,6 +632,9 @@
                     <div class="podium-label">Terceiro Lugar</div>
                 </div>
             </div>
+            <button id="sendPodiumBtn" class="save-webhook-btn" style="margin-top: 20px;">
+                📢 Enviar Pódio para Discord
+            </button>
         </div>
     </div>
 
@@ -582,6 +653,9 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/discord.js"></script>
+    <script src="js/tournament.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
